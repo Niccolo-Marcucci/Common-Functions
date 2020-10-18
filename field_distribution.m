@@ -14,13 +14,15 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Computes the field distribution inside a dielectric multilayer
-% stack. 
-% - The output is computed on the normalized H_tilde=Z0*H;
-% - The reolution parameter can be neglected
-% - The function can be used also to etract only nz. in this case use
+% Computes the field distribution inside a dielectric multilayer stack. 
+%
+% - The output P is the transverse power density: Hx^2 for p-polarization 
+%   or Ex^2 for s-polarization (H is normalized w.r.t. Z0).;
+% - The resolution parameter (in input) can be neglected
+% - The function can be used also to extract only nz. in this case use
 %   in the form:
 %   [z, nz] = field_distribution(lambda,theta,d,n,'',res)
+
 function [z, nz, P, field] = field_distribution(lambda,theta,d,n,pol,res)
 
 [d,n,dsub,dair] = prepare_multilayer(d,n);  % check fun description 
