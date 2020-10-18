@@ -142,15 +142,15 @@ if pol == 'p'
     field.Ery = E(1,:).*costheta_z;
     field.Ely = E(2,:).*costheta_z;
     field.Erz =-E(1,:).*sintheta_z;
-    field.Elz =+E(2,:).*sintheta_z;
-    field.Ey = field.Ery - field.Ely;
-    field.Ez = field.Erz - field.Elz;
+    field.Elz = E(2,:).*sintheta_z;
+    field.Ey = field.Ery + field.Ely;
+    field.Ez = field.Erz + field.Elz;
     
     field.Hrx = beta*field.Erz - nz.*costheta_z.*field.Ery;
     field.Hlx =-beta*field.Elz - nz.*costheta_z.*field.Ely; 
     field.Hx = field.Hrx + field.Hlx;
-    
-    P = abs(field.Hx).^2/(abs(field.Hx(length(zsub)+1))^2);
+
+    P = abs(field.Hx).^2/(abs(field.Hrx(length(z_sub)+1))^2);
 else
     
     % With s-polarisation the sign convention is much easier. We
