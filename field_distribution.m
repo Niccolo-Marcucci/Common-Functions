@@ -16,8 +16,8 @@
 
 % Computes the field distribution inside a dielectric multilayer stack. 
 %
-% - The output P is the transverse power density: Hx^2 for p-polarization 
-%   or Ex^2 for s-polarization (H is normalized w.r.t. Z0).;
+% - The output P is the normalized power density: |Hx|^2/|H0|^2 for 
+%   p-polarization and |Ex|^2 for s-polarization;
 % - The resolution parameter (in input) can be neglected
 % - The function can be used also to extract only nz. in this case use
 %   in the form:
@@ -150,7 +150,7 @@ if pol == 'p'
     field.Hlx =-beta*field.Elz - nz.*costheta_z.*field.Ely; 
     field.Hx = field.Hrx + field.Hlx;
     
-    P = abs(field.Hx).^2/2;
+    P = abs(field.Hx).^2/(abs(field.Hx(length(zsub)+1))^2);
 else
     
     % With s-polarisation the sign convention is much easier. We
@@ -169,6 +169,6 @@ else
     field.Hy = field.Hry + field.Hly;
     field.Hz = field.Hrz + field.Hlz;
     
-    P = abs(field.Ex).^2/2;
+    P = abs(field.Ex).^2;
 end
 end
