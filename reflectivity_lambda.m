@@ -23,7 +23,7 @@
 % last one. Indeed the values of the field r and t will be computed at
 % such interfaces. 
 
-function [R,r,t,Tr] = reflectivity (lambda,theta_in,d,n,pol)
+function [R,r,t,Tr] = reflectivity_lambda (lambda,theta_in,d,n,pol)
 
 % if you propose a multilayer which is altready optimized for this
 % calculation (i.e. no dummy layers and no zero thicknes layers), you
